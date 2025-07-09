@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler secret bulk .dev.vars.production && wrangler deploy --minify",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,jsonc}\"",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "better-auth:generate": "pnpm dlx @better-auth/cli@latest generate --config ./better-auth.config.ts --output ./src/db/schema.ts"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "better-auth": "^1.2.8",
+    "drizzle-orm": "^0.43.1",
+    "hono": "^4.7.10"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "prettier": "^3.5.3",
+    "drizzle-kit": "^0.31.1",
+    "wrangler": "^4.16.1"
+  }
+}
